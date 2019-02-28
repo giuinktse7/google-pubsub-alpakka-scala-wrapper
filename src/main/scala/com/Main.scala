@@ -16,7 +16,6 @@ object Main extends App {
   implicit val mat: ActorMaterializer = ActorMaterializer()
 
   println(System.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
-  Pubsub.loadCredentials()
 
   val topic = "elvis-events"
   val subscription = "dev"

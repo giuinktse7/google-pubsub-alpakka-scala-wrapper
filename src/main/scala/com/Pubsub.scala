@@ -104,7 +104,7 @@ object Pubsub {
     subscribeStream(subscription).runForeach(onReceiveMessage)
   }
 
-  def withConfig[A](f: PubSubConfig => A)(implicit system: ActorSystem): A = {
+  private def withConfig[A](f: PubSubConfig => A)(implicit system: ActorSystem): A = {
     // newConfig
 
     pubsubConfig.map(f) match {
@@ -127,7 +127,7 @@ object Pubsub {
   /**
     * Load the Google-PubSub credential file. Should only be called once upon startup.
     */
-  def loadCredentials()(implicit system: ActorSystem): Unit = {
+  private def loadCredentials()(implicit system: ActorSystem): Unit = {
     import scala.io.Source
 
     val credentialsFile = System.getenv("GOOGLE_APPLICATION_CREDENTIALS")
